@@ -19,6 +19,11 @@ jobs:
             php-version: 7.4
     name: PHP ${{ matrix.php-versions }} on ${{ matrix.laravel-version }}
     steps:
+    - name: db
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        mysql database: 'blockings-testing' # Optional, default value is "test". The specified database which will be create
+        mysql user: 'developer' # Required if "mysql root password" is empty, default is empty
     - name: Checkout
       uses: actions/checkout@master
     - name: Setup PHP
